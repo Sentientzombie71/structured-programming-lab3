@@ -3,11 +3,11 @@
  * ICS 2371 — Lab 3: Control Structures I
  * Task 3: switch-case and match Expression [6 marks]
  *
- * @author     [Your Full Name]
- * @student    [Your Reg Number, e.g. SCT212-XXXX/2024]
+ * @author     [Collins Njoroge Muchiri]
+ * @student    [ENE212-0059/2023]
  * @lab        Lab 3 of 14
  * @unit       ICS 2371
- * @date       [Date completed]
+ * @date       [Date complete 02/04/2026]
  */
 
 // ══════════════════════════════════════════════════════════════
@@ -59,3 +59,89 @@ $status_code = 404;
 // 1. What is the key difference between switch (==) and match (===)?
 // 2. Give one example where this difference changes the output.
 // 3. When would you prefer switch over match, and why?
+
+
+// Exercise A
+
+echo "<h3>Exercise A— Day of Week Classifier</h3>";
+
+$day = 3; // change this value to test
+
+switch ($day) {
+    case 1:
+        echo "Monday — Lecture day";
+        break;
+    case 2:
+        echo "Tuesday — Lecture day";
+        break;
+    case 3:
+        echo "Wednesday — Lecture day";
+        break;
+    case 4:
+        echo "Thursday — Lecture day";
+        break;
+    case 5:
+        echo "Friday — Lecture day";
+        break;
+    case 6:
+    case 7:
+        echo "Weekend";
+        break;
+    default:
+        echo "Invalid day";
+}
+
+// Exercise B
+
+echo "<h3>Exercise B— HTTP Status Code Explainer (switch)</h3>";
+
+$status_code = 404; // change to test
+
+switch ($status_code) {
+    case 200:
+        echo "OK";
+        break;
+    case 301:
+        echo "Moved Permanently";
+        break;
+    case 400:
+        echo "Bad Request";
+        break;
+    case 401:
+        echo "Unauthorized";
+        break;
+    case 403:
+        echo "Forbidden";
+        break;
+    case 404:
+        echo "Not Found";
+        break;
+    case 500:
+        echo "Internal Server Error";
+        break;
+    default:
+        echo "Unknown Status Code";
+}
+
+//Exercise C
+
+echo "<h3>Exercise C— Rewrite using match (PHP 8)</h3>";
+
+
+$status_code = 404;
+
+$result = match ($status_code) {
+    200 => "OK",
+    301 => "Moved Permanently",
+    400 => "Bad Request",
+    401 => "Unauthorized",
+    403 => "Forbidden",
+    404 => "Not Found",
+    500 => "Internal Server Error",
+    default => "Unknown Status Code"
+};
+
+echo $result;
+
+
+?>

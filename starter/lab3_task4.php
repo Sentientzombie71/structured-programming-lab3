@@ -6,11 +6,11 @@
  * IMPORTANT: You must complete pseudocode AND flowchart in your PDF
  * report BEFORE writing any code below.
  *
- * @author     [Your Full Name]
- * @student    [Your Reg Number, e.g. SCT212-XXXX/2024]
+ * @author     [Collins Njoroge Muchiri]
+ * @student    [ENE212-0059/2023]
  * @lab        Lab 3 of 14
  * @unit       ICS 2371
- * @date       [Date completed]
+ * @date       [Date complete 02/04/2026]
  */
 
 // ── Problem: Student Loan Eligibility System ───────────────────────────────
@@ -57,3 +57,43 @@ $previous_loan  = false;
 // Set C: enrolled=false, gpa=3.5, income=60000,   previous=true  → Not enrolled
 // Set D: enrolled=true,  gpa=2.5, income=600000,  previous=true  → Income fail
 // Set E: enrolled=true,  gpa=2.0, income=50000,   previous=true  → Full | Renewal
+
+
+function checkEligibility($enrolled, $gpa, $annual_income, $previous_loan) {
+
+    if ($enrolled == false) {
+        return "Not enrolled";
+    }
+
+    if ($gpa < 2.0) {
+        return "GPA fail";
+    }
+
+    if ($annual_income >= 500000) {
+        return "Income fail";
+    }
+
+    // Loan category
+    if ($annual_income < 100000) {
+        $loan = "Full";
+    } elseif ($annual_income < 250000) {
+        $loan = "Partial 75%";
+    } else {
+        $loan = "Partial 50%";
+    }
+
+    // Ternary for application type
+    $type = $previous_loan ? "Renewal" : "New";
+
+    return "$loan | $type";
+}
+
+//  TEST DATA SETS
+
+echo "Set A: " . checkEligibility(true, 3.1, 180000, false) . "<br>";
+echo "Set B: " . checkEligibility(true, 1.8, 80000, false) . "<br>";
+echo "Set C: " . checkEligibility(false, 3.5, 60000, true) . "<br>";
+echo "Set D: " . checkEligibility(true, 2.5, 600000, true) . "<br>";
+echo "Set E: " . checkEligibility(true, 2.0, 50000, true) . "<br>";
+
+?>
